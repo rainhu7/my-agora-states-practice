@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install # npm 인스톨하기
-        working-directory: ./my-agora-states-client
+        working-directory: ./my-agora-states-client 
         
 # 2. Webpack을 이용해 빌드를 진행하고        
       - name: Build
@@ -27,14 +27,14 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_EC2_METADATA_DISABLED: true
         run: |
-          aws --version # aws 버전확인
+          aws --version 
       - name: Sync Bucket
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_EC2_METADATA_DISABLED: true
         run: |
-          aws s3 sync \ # s3에
+          aws s3 sync \ 
             --region ap-northeast-2 \
             build s3://my-app-client-bucket \
             --delete
